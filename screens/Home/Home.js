@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	View,
 	Text,
@@ -10,8 +10,8 @@ import {
 const levelNames = ["Beginner", "Intermediate", "Advanced"];
 
 const Home = ({ navigation }) => {
-	const loadTests = ({ level }) => {
-		navigation.navigate("Tests", { DiffLevel: level });
+	const loadTests = (level) => {
+		navigation.navigate("Tests", { name: "Tests", DiffLevel: level });
 	};
 
 	return (
@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
 					<TouchableOpacity
 						style={styles.button}
 						key={i}
-						onPress={(level) => loadTests(level)}
+						onPress={() => loadTests(level)}
 					>
 						<Text style={styles.title}>{level}</Text>
 					</TouchableOpacity>

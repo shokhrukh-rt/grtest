@@ -9,9 +9,18 @@ const Tests = ({ route, navigation }) => {
 	const [data, setData] = useState([]);
 	const { DiffLevel } = route.params;
 
+	const url = () => {
+		if (DiffLevel == "Beginner")
+			return "http://211.208.156.232:5000/grammar/easy";
+		if (DiffLevel == "Intermediate")
+			return "http://211.208.156.232:5000/grammar/intermediate";
+		if (DiffLevel == "Advanced")
+			return "http://211.208.156.232:5000/grammar/advanced";
+	};
+
 	const getTests = async () => {
 		try {
-			const res = await fetch("http://211.208.156.232:5000");
+			const res = await fetch(url);
 			const json = await res.json();
 			setData(json);
 		} catch (error) {
